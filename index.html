@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Tours Japan - Book Your Adventure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --sakura-pink: #ffb7c5;
+            --japan-red: #bc002d;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic Pro', Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff5f7;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--japan-red);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .tour-card {
+            border: 2px solid var(--sakura-pink);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .highlight {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        #specialOffer {
+            padding: 1.5rem;
+            margin: 2rem 0;
+            background-color: #fff;
+            border: 2px dashed var(--japan-red);
+        }
+
+        .cta-button {
+            background-color: var(--japan-red);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #8b0015;
+            transform: translateY(-2px);
+        }
+
+        #bookingCart {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .theme-toggle {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1><i class="fas fa-map-marker-alt"></i> Sakura Tours Japan</h1>
+        <p id="welcomeMessage">Experience the Beauty of Japan</p>
+        <button class="cta-button theme-toggle" onclick="changeHeaderColor()">
+            Change Theme
+        </button>
+    </header>
+
+    <main>
+        <section aria-labelledby="featuredTours">
+            <h2 id="featuredTours">Featured Tours</h2>
+            <div class="tour-card" id="goldenRouteTour">
+                <h3>Golden Route Tour <span class="price">¥98,000</span></h3>
+                <p>Tokyo - Hakone - Kyoto - Osaka</p>
+                <button class="cta-button" onclick="toggleHighlight('goldenRouteTour')">
+                    Highlight This Tour
+                </button>
+            </div>
+
+            <div class="tour-card" id="culturalImmersionTour">
+                <h3>Cultural Immersion Tour <span class="price">¥125,000</span></h3>
+                <p>Tea Ceremonies - Kimono Experience - Traditional Crafts</p>
+                <button class="cta-button" onclick="toggleHighlight('culturalImmersionTour')">
+                    Highlight This Tour
+                </button>
+            </div>
+        </section>
+
+        <section aria-labelledby="specialDeal">
+            <h2 id="specialDeal">Limited Time Offer</h2>
+            <div id="specialOffer">
+                <p>Book now and get free airport transfer!</p>
+                <button class="cta-button" onclick="toggleSpecialOffer()">
+                    Claim Offer
+                </button>
+            </div>
+        </section>
+
+        <div id="bookingCart">
+            <h3>Your Itinerary (<span id="itemCount">0</span>)</h3>
+            <ul id="tourItems"></ul>
+            <button class="cta-button" onclick="addTour()">Add Sample Tour</button>
+            <button class="cta-button" onclick="removeTour()">Remove Last</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
